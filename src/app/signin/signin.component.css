@@ -1,0 +1,103 @@
+.signin-content {
+  font-family: Intro;
+  width: 94vw;
+  color: white;
+}
+
+.signin-content, .signin-content > *, .signin-content > * > *, .signin-content > * > * > * {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.signin-content > h1 {
+  margin-top: 18px;
+  font-size: 54px;
+  width: 80vw;
+  color: white;
+}
+
+.button {
+  margin-bottom: 12px;
+  overflow: hidden;
+  width: 100%;
+}
+
+a.ddott {
+  cursor: pointer;
+  display: block;
+  line-height: 50px;
+  height: 50px;
+  width: 24%;
+  overflow: hidden;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 100px 0 #FFF, 1px 76px 10px #000;
+  color: #FFF;
+  background: #5D8EC7;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+
+}
+
+a.ddott:hover {
+  text-shadow: 0 50px 0 #5D8EC7;
+  margin-top: -50px;
+  height: 100px;
+  background: #FFF;
+}
+
+form > input {
+  display: block;
+  font-size: 18px;
+  line-height: 50px;
+  height: 50px;
+  width: 24%;
+  overflow: hidden;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 100px 0 #FFF, 1px 76px 10px #000;
+  color: #5D8EC7;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+form > p {
+  margin-top: 3vh;
+  margin-bottom: 1vh;
+  font-size: 20px;
+}
+
+@media screen and (max-width: 1020px) {
+  .signin-content > h1 {
+    font-size: 26px;
+  }
+
+  .button {
+    margin-top: 24px;
+  }
+
+  form > input, a.ddott {
+    text-shadow: 0 114px 0 #FFF;
+    line-height: 64px;
+    height: 64px;
+    font-size: 18px;
+    width: 80%;
+  }
+
+  a.ddott:hover {
+    text-shadow: 0 64px 0 #5D8EC7;
+    margin-top: -64px;
+    height: 128px;
+  }
+
+  form > p {
+    font-size: 20px;
+  }
+}

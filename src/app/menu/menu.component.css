@@ -1,0 +1,39 @@
+.header-container {
+  font-family: Intro;
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header-container > div, .header-item > a {
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 25px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.header-container > div:hover {
+  font-size: 22px;
+}
+
+@media screen and (max-width: 1020px) {
+  .header-container {
+    grid-template-columns: 1fr;
+  }
+
+  .header-container > div {
+    font-size: 40px;
+    line-height: 90px;
+  }
+
+  .header-container > div:hover {
+    font-size: 50px;
+  }
+}
