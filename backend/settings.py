@@ -13,8 +13,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'fwe0-3-40-32(ay0z)xt87arn*+lziuz$7p1%6^-z8d8knu!&mth0^5gp8lmp*'
-TG_API_KEY = '5855299007:AAEZjjXwhdhg16YFpAeiI1QxUdjpiv6mPok'
+SECRET_KEY = 'YOUR_DJANGO_KEY'
+TG_API_KEY = 'YOUR_TG_BOT_KEY'
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
