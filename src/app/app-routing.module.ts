@@ -8,6 +8,10 @@ import {MessagesComponent} from "./messages/messages.component";
 import {MessageComponent} from "./message/message.component";
 import {TodolistComponent} from "./todolist/todolist.component";
 import {ProfileComponent} from "./profile/profile.component";
+import {OrdersComponent} from "./orders/orders.component";
+import {CalendarComponent} from "./calendar/calendar.component";
+import {MarketingComponent} from "./marketing/marketing.component";
+import {ApiComponent} from "./api/api.component";
 const routes: Routes = [
   {
     path: '',
@@ -45,9 +49,29 @@ const routes: Routes = [
     title: 'Выполняйте задачи!'
   },
   {
+    path: 'orders',
+    component: OrdersComponent,
+    title: 'Следите за заказами!'
+  },
+  {
     path: 'profile',
     component: ProfileComponent,
     title: 'Профиль'
+  },
+  {
+    path: 'calendar',
+    component: CalendarComponent,
+    title: 'Управляйте временем!'
+  },
+  {
+    path: 'marketing',
+    component: MarketingComponent,
+    title: 'Советы по маркетингу!'
+  },
+  {
+    path: 'api',
+    component: ApiComponent,
+    title: 'Воспользуйтесь нашим API!'
   }
 ];
 @NgModule({

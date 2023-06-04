@@ -1,0 +1,90 @@
+.calendar {
+  font-family: Intro;
+  color: white;
+  margin: auto;
+  text-align: center;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: auto;
+  grid-gap: 16px;
+  width: 50%;
+  padding: 16px;
+}
+
+select {
+  display: block;
+  font-size: 18px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 5px;
+}
+
+option, select {
+  text-align: center;
+  font-family: Intro;
+}
+
+option{
+  color: #5D8EC7;
+}
+
+.days {
+  margin: auto;
+  width: fit-content;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 12px;
+}
+
+.day {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 24px;
+  aspect-ratio: 1;
+  width: 60px;
+  border: 3px white solid;
+}
+
+.date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  cursor: pointer;
+  transition: all 1s ease-in-out;
+}
+
+.date:hover {
+  background: rgba(231, 248, 255, 0.18);
+  border-radius: 16px;
+}
+
+.date.today {
+  border: 2px white solid;
+}
+
+.date.selected {
+  border: 1px white solid;
+}
+
+@media screen and (max-width: 1020px) {
+  .calendar{
+    width: 80%;
+  }
+  .header{
+    grid-template-columns: 1fr;
+  }
+  .day, .date {
+    width: 30px;
+  }
+  .header{
+    width: 80%;
+  }
+}

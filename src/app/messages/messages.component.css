@@ -5,6 +5,22 @@
   text-align: center;
 }
 
+form > input {
+  display: block;
+  font-size: 18px;
+  line-height: 50px;
+  height: 50px;
+  width: 24%;
+  overflow: hidden;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 100px 0 #FFF, 1px 76px 10px #000;
+  color: #5D8EC7;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .chat {
   cursor: pointer;
   margin: 20px auto 0;
@@ -13,6 +29,10 @@
   text-align: start;
   padding: 14px;
   transition: all 1s ease-in-out;
+}
+
+.completed {
+  border-color: rgba(255,255,255,0.18)
 }
 
 .chat:hover {
@@ -69,5 +89,9 @@ option, select {
   .chat > p {
     line-height: 35px;
     font-size: 22px;
+  }
+
+  form > input {
+    width: 80%;
   }
 }

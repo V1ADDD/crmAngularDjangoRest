@@ -1,5 +1,8 @@
-import {Component} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {Component, Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Router} from "@angular/router";
+import * as CryptoJS from 'crypto-js';
+import {httpOptions} from "../app.component";
 
 @Component({
   selector: 'app-signup',
@@ -11,20 +14,31 @@ export class SignupComponent {
   login: string | undefined;
   password: string | undefined;
   password2: string | undefined;
-  constructor(private http: HttpClient) {
+  backendURL: string = 'https://crmdiplom.pythonanywhere.com';
+  // backendURL: string = 'http://127.0.0.1:8000';
+
+  constructor(private http: HttpClient, private router: Router) {
+    if ('Authorization' in localStorage)
+      this.router.navigate(['/menu']);
   }
 
   onSubmit() {
     if (this.password == this.password2) {
-      const url = 'https://127.0.0.1:8000/accounts';
+      const hash = CryptoJS.MD5(this.password + "d3289rfh28");
+      const url = this.backendURL + '/accounts';
       const data = {
+        FIO: this.FIO,
         login: this.login,
-        password: this.password
+        password: hash.toString()
       };
-
-      this.http.post(url, data).subscribe(response => {
-        console.log(response);
-      });
+      this.http.post(url, data).subscribe(
+        response =>{
+          this.router.navigate(['/signin']);
+        },
+      error => {
+        alert("Неверные данные =(")
+      }
+      );
     }
   }
 }

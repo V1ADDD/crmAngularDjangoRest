@@ -1,0 +1,8 @@
+<h1>API для разработчиков</h1>
+<div *ngFor="let api of apis" class="api-description">
+  <h2>- {{api.link}} -</h2>
+  <h2>{{api.description}}</h2>
+  <div class="api-requests">
+    <li *ngFor="let a of api.requestTypes">{{a}}</li>
+  </div>
+</div>

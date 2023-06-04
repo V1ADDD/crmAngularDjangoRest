@@ -1,0 +1,23 @@
+<div class="header-container" style="display: block; padding-top: 50px; padding-bottom: 50px">
+  <div (click)="add_order()" class="chat" style="border-width: 3px; text-align: center;">
+    <h3>Добавить заказ</h3>
+  </div>
+  <form #add_order1 (submit)="new_order(add_order1, $event)" id="add_order" style="margin-top: 10px; display: none">
+    <input name="name" type="text" placeholder="Название">
+    <input name="desc" type="text" placeholder="Описание">
+    <input name="client" [formControl]="client" type="text" placeholder="ФИО Клиента">
+    <div (click)="new_order(add_order1, $event)" class="button"><a class="ddott">Добавить</a></div>
+  </form>
+  <ng-container *ngFor="let order of orders">
+  <div [ngClass]="{'completed': order.status === 'Оплачено'}" class="chat">
+    <h3 (click)="order_open(order.id)">{{order.name}}</h3>
+    <h5>{{order.clientname}}</h5>
+    <div id="desc{{order.id}}" style="display: none">
+      <div style="margin: 16px 0">{{order.desc}}</div>
+      <div *ngIf="order.status !== 'Оплачено'" class="button"><a (click)="update_status(order.id)" class="ddott">Перейти далее</a></div>
+    </div>
+    <p style="text-align: end">{{order.postdate}}</p>
+    <p style="text-align: end">{{order.status}}</p>
+  </div>
+  </ng-container>
+</div>

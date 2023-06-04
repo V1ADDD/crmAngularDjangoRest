@@ -1,0 +1,14 @@
+<div class="calendar">
+  <div class="header">
+    <select [(ngModel)]="selectedYear" (ngModelChange)="updateCalendar()">
+      <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+    </select>
+    <select [(ngModel)]="selectedMonth" (ngModelChange)="updateCalendar()">
+      <option *ngFor="let month of months" [value]="month.value">{{ month.name }}</option>
+    </select>
+  </div>
+  <div class="days">
+    <div class="day" *ngFor="let day of days">{{ day }}</div>
+    <div *ngFor="let date of calendar" class="date" title="{{ date.desc }}" (click)="redirectToCreateTask(date.day)" [class.today]="date.isToday" [class.selected]="date.isSelected">{{ date.day }}</div>
+  </div>
+</div>

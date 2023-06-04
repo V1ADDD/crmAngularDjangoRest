@@ -1,19 +1,35 @@
 <div class="header-container" style="display: block; padding-top: 50px; padding-bottom: 50px">
-  <div onclick="add_task()" class="chat" style="border-width: 3px; text-align: center;">
+  <div (click)="add_task()" class="chat" style="border-width: 3px; text-align: center;">
     <h3>Добавить задачу</h3>
   </div>
-  <form id="add_task" style="margin-top: 10px; display: none">
-    <input type="text" placeholder="Название">
-    <input type="text" placeholder="Описание">
-    <input type="date" placeholder="Дедлайн">
-    <div class="button"><a href="menu.html" class="ddott">Добавить</a></div>
+  <form #add_task1 (submit)="new_task(add_task1, $event)" id="add_task" style="margin-top: 10px; display: none">
+    <input name="name" type="text" placeholder="Название">
+    <input name="desc" type="text" placeholder="Описание">
+    <input name="deadline" [formControl]="deadline" type="date" min="{{mindate}}" placeholder="Дедлайн">
+    <div (click)="new_task(add_task1, $event)" class="button"><a class="ddott">Добавить</a></div>
   </form>
-  <!-- for chat in chats ...-->
-  <div onclick="task(1)" class="chat">
-    <!--name-->
-    <h3>Сделать 5 заказов</h3>
+  <ng-container *ngFor="let task of tasks">
+  <div *ngIf="task.deadline>=0" [ngClass]="{'completed': task.status === 'Выполнено'}" class="chat">
+    <h3 (click)="task_open(task.id)">{{task.name}}</h3>
+    <div id="desc{{task.id}}" style="display: none">
+      <div style="margin: 16px 0">{{task.desc}}</div>
+      <select #task_status (change)="update_status(task.id, task_status.value)" style="height: fit-content; margin: 16px 0">
+        <option value="Открыто" *ngIf="task.status=='Открыто'" selected>Открыто</option>
+        <option value="Открыто" *ngIf="task.status!='Открыто'">Открыто</option>
+        <option value="Начато" *ngIf="task.status=='Начато'" selected>Начато</option>
+        <option value="Начато" *ngIf="task.status!='Начато'">Начато</option>
+        <option value="25%" *ngIf="task.status=='25%'" selected>25%</option>
+        <option value="25%" *ngIf="task.status!='25%'">25%</option>
+        <option value="На полпути" *ngIf="task.status=='На полпути'" selected>На полпути</option>
+        <option value="На полпути" *ngIf="task.status!='На полпути'">На полпути</option>
+        <option value="Заканчиваю" *ngIf="task.status=='Заканчиваю'" selected>Заканчиваю</option>
+        <option value="Заканчиваю" *ngIf="task.status!='Заканчиваю'">Заканчиваю</option>
+        <option value="Выполнено" *ngIf="task.status=='Выполнено'" selected>Выполнено</option>
+        <option value="Выполнено" *ngIf="task.status!='Выполнено'">Выполнено</option>
+      </select>
+    </div>
     <!--curdate-dedline-->
-    <p style="margin-top: 12px">осталось 3 дня</p>
+    <p style="margin-top: 12px">осталось {{task.deadline}} дн.</p>
   </div>
-
+  </ng-container>
 </div>

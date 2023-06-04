@@ -10,7 +10,12 @@ import { MessagesComponent } from './messages/messages.component';
 import { MessageComponent } from './message/message.component';
 import { ProfileComponent } from './profile/profile.component';
 import { TodolistComponent } from './todolist/todolist.component';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from "@angular/common/http";
+import { OrdersComponent } from './orders/orders.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { MarketingComponent } from './marketing/marketing.component';
+import { ApiComponent } from './api/api.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,13 +26,19 @@ import { FormsModule } from '@angular/forms';
     MessagesComponent,
     MessageComponent,
     ProfileComponent,
-    TodolistComponent
+    TodolistComponent,
+    OrdersComponent,
+    CalendarComponent,
+    MarketingComponent,
+    ApiComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,25 @@
+<h1>В этом месяце получено {{countCurrentOrders}} заказа, это {{moreOrLess}}, чем в прошлом месяце
+  <ng-container *ngIf="moreOrLess != 'не больше и не меньше'">
+    на {{differenceInOrders}}%
+  </ng-container>
+</h1>
+<h2>У вас поставлено {{tasksAvailable}} текущих задач</h2>
+
+<div class="histogram">
+  <div class="bar" *ngFor="let order of ordersByMonths" [class.now]="countCurrentOrders == order.ordersCount"
+       style="height: {{(order.ordersCount/ordersInYear)*100}}%">
+    <div class="value">{{order.ordersCount}}</div>
+  </div>
+</div>
+<div class="months">
+  <div *ngFor="let order of ordersByMonths" class="month">{{order.label}}</div>
+</div>
+<h2>Далее представлены ответы на важные вопросы относительно бизнеса и маркетинга. Изучите эту информацию она может быть
+  полезна!</h2>
+<div *ngFor="let quest of questions" class="questions">
+  <h2>- {{quest.title}} -</h2>
+  <div class="question-desc">
+    <li *ngFor="let desc_ of quest.desc">{{desc_}}</li>
+  </div>
+</div>
+

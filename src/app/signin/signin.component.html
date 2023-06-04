@@ -2,9 +2,9 @@
   <h1>Войдите и продолжите работу!</h1>
   <form>
     <p>Логин</p>
-    <input type="text" name="login" placeholder="Как называют вас на сайте?">
+    <input type="text" [(ngModel)]="login" name="login" placeholder="Как называют вас на сайте?">
     <p>Пароль</p>
-    <input type="password" name="password" placeholder="Ваша защита?">
-    <div style="margin-top: 3vh;" class="button"><a href="/menu" class="ddott">Войти</a></div>
+    <input type="password" [(ngModel)]="password" name="password" placeholder="Ваша защита?">
+    <div (click)="signIn()" style="margin-top: 3vh;" class="button"><a class="ddott">Войти</a></div>
   </form>
 </div>

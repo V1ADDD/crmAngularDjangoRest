@@ -1,30 +1,24 @@
 <div class="header-container" style="display: block; padding-top: 50px; padding-bottom: 50px">
-  <!--chat__client-->
-  <h1>Русак Владислав</h1>
+  <h1>{{chat.client}}</h1>
   <hr style="margin-top: 1%; margin-bottom: 2%">
-  <form>
-    <textarea style="text-align: start;"></textarea>
-    <div style="" class="button"><a href="menu.html" class="ddott">Отправить</a></div>
+  <form (submit)="send_message()">
+    <textarea [(ngModel)]="message" name="message" style="text-align: start;"></textarea>
+    <div (click)="send_message()" class="button"><a class="ddott">Отправить</a></div>
+    <div (click)="addZakaz()" class="button"><a class="ddott">Добавить заказ</a></div>
   </form>
   <hr style="margin-top: 1%; margin-bottom: 2%">
-  <!-- for mes in messages ...-->
-  <div style="width: 50%; margin-left: 20%" class="chat">
-    <!--text-->
-    <h5>Да, где-то там</h5>
-    <!--lastmessage-->
-    <p style="text-align: end">3.19.2023 / 12.50</p>
-  </div>
-  <div style="width: 50%; margin-right: 20%" class="chat">
-    <!--text-->
-    <h5>Здравствуйте, хорошо, мы скоро вам все отправим, какой ваш адрес?</h5>
-    <!--lastmessage-->
-    <p style="text-align: end">3.19.2023 / 11.29</p>
-  </div>
-  <div style="width: 50%; margin-left: 20%" class="chat">
-    <!--text-->
-    <h5>Здравствуйте, хотел бы заказать бла-бла и немного еще того и этого</h5>
-    <!--lastmessage-->
-    <p style="text-align: end">3.19.2023 / 11.27</p>
-  </div>
-
+  <ng-container *ngFor="let mes of messages">
+    <div *ngIf="!mes.to_client" style="width: 50%; margin-left: 20%" class="chat">
+      <!--text-->
+      <h5>{{mes.message}}</h5>
+      <!--lastmessage-->
+      <p style="text-align: end">{{mes.date}}</p>
+    </div>
+    <div *ngIf="mes.to_client" style="width: 50%; margin-right: 20%" class="chat">
+      <!--text-->
+      <h5>{{mes.message}}</h5>
+      <!--lastmessage-->
+      <p style="text-align: end">{{mes.date}}</p>
+    </div>
+  </ng-container>
 </div>

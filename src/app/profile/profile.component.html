@@ -1,40 +1,59 @@
 <div class="header-container" style="display: block; padding-top: 50px; padding-bottom: 50px">
-    <!--user-->
-    <h1>Пользователь</h1>
+  <h1>{{user.FIO}}</h1>
+  <hr style="margin-top: 1%; margin-bottom: 2%">
+  <ng-container *ngIf="user.sub>1 || user.isadmin">
+    <form>
+      <p style="margin-bottom: 8px" *ngIf="user.userChatId">
+        Подключено
+      </p>
+      <div (click)="addChatId()" style="margin-bottom: 12px" class="button"><a class="ddott">Подключиться к телеграмм боту</a></div>
+    </form>
+  </ng-container>
+  <ng-container *ngIf="!user.isadmin">
+    <form>
+      <h2>Подписка</h2>
+      <select (change)="change_select()" id="select_sub" style="margin: 12px auto">
+        <ng-container *ngFor="let sub of subs">
+          <option *ngIf="sub.id==user.sub" value="{{sub.id}}" selected>{{sub.name}}</option>
+          <option *ngIf="sub.id!=user.sub" value="{{sub.id}}">{{sub.name}}</option>
+        </ng-container>
+      </select>
+      <div id="posses" style="width: 200px; margin-bottom: 8px;">
+        <ng-container *ngIf="user.sub==4">
+          {{subs[2].possibilities}}<br>КУПЛЕНО
+        </ng-container>
+        <ng-container *ngIf="user.sub!=4">
+          {{subs[user.sub - 1].possibilities}}<br>КУПЛЕНО
+        </ng-container>
+      </div>
+      <div id="buttonSubChange" (click)="subscribe()" style="display: none" class="button"><a class="ddott">ПОДКЛЮЧИТЬ</a></div>
+    </form>
     <hr style="margin-top: 1%; margin-bottom: 2%">
-        <form>
-            <h2>Подписка</h2>
-            <!--user.subscription-->
-            <select style="margin: 12px auto">
-                <option value="Try">Пробная</option>
-                <option value="Telegram">Телеграм</option>
-                <option value="Email">Почта и Вайбер</option>
-                <option value="All">Все включено</option>
-            </select>
-            <div class="button"><a href="" class="ddott">Купить</a></div>
-        </form>
-    <hr style="margin-top: 1%; margin-bottom: 2%">
-        <form>
-            <h2 style="margin-bottom: 12px">Информация</h2>
-            <input type="email" placeholder="Почта">
-            <input type="text" placeholder="Телефон">
-            <div class="button"><a href="" class="ddott">Сохранить</a></div>
-        </form>
-<!--    if admin-->
-<!--        <form style="margin-bottom: 2%">-->
-<!--            <input type='text' placeholder="Поиск пользователя">-->
-<!--        </form>-->
-<!--        &lt;!&ndash; for user in users&ndash;&gt;-->
-<!--        <form>-->
-<!--            <h2>User</h2>-->
-<!--            &lt;!&ndash;user.subscription&ndash;&gt;-->
-<!--            <select style="margin: 12px auto">-->
-<!--                <option value="Try">Пробная</option>-->
-<!--                <option value="Telegram">Телеграм</option>-->
-<!--                <option value="Email">Почта и Вайбер</option>-->
-<!--                <option value="All">Все включено</option>-->
-<!--            </select>-->
-<!--            &lt;!&ndash;post&ndash;&gt;-->
-<!--            <div class="button"><a href="" class="ddott">Изменить</a></div>-->
-<!--        </form>-->
+    <form>
+      <h2 style="margin-bottom: 12px">Информация</h2>
+      <input type="email" [(ngModel)]="email" name="email" placeholder="Почта">
+      <input type="text" [(ngModel)]="phone" name="phone" placeholder="Телефон">
+      <div (click)="update_user()" class="button"><a class="ddott">Сохранить</a></div>
+    </form>
+  </ng-container>
+
+  <!--admin-->
+  <ng-container *ngIf="user.isadmin">
+    <form (submit)="find_users()" style="margin-bottom: 2%">
+      <input type='text' [(ngModel)]="find" name="find" placeholder="Поиск пользователя">
+    </form>
+    <form *ngFor="let user_ of users">
+      <h2>{{user_.login}}</h2>
+      <select id="select_sub{{user_.id}}" style="margin: 12px auto">
+        <ng-container *ngFor="let sub of subs">
+          <option *ngIf="sub.id==user_.sub && !user_.isadmin" value="{{sub.id}}" selected>{{sub.name}}</option>
+          <option *ngIf="sub.id==user_.sub && user_.isadmin" value="{{sub.id}}">{{sub.name}}</option>
+          <option *ngIf="sub.id!=user_.sub" value="{{sub.id}}">{{sub.name}}</option>
+        </ng-container>
+        <option *ngIf="user_.isadmin" value="admin" selected>admin</option>
+        <option *ngIf="!user_.isadmin" value="admin">admin</option>
+      </select>
+      <div (click)="change_sub(user_.id)" class="button"><a class="ddott">Изменить</a></div>
+    </form>
+  </ng-container>
 </div>
