@@ -71,7 +71,7 @@ export class ProfileComponent {
     if ((this.user.phone == null && this.user.email == null) || (this.user.phone == '' && this.user.email == '')) {
       alert("Для подключения другого тарифа, добавьте хотя бы один способ связи ниже!");
     } else {
-      const botKey = "5855299007:AAEZjjXwhdhg16YFpAeiI1QxUdjpiv6mPok";
+      const botKey = "YOUR_TG_BOT_TOKEN";
       console.log(this.users)
       for (let user of this.users) {
         if (user.isadmin)
@@ -148,7 +148,7 @@ export class ProfileComponent {
   addChatId() {
     const randomString = Math.random().toString(36).substring(2);
     const code = randomString.slice(0, 4).toUpperCase();
-    const botKey = "5855299007:AAEZjjXwhdhg16YFpAeiI1QxUdjpiv6mPok";
+    const botKey = "YOUR_TG_BOT_TOKEN";
     if (confirm("Отправьте код '"+code+"' боту t.me/crm_operations_bot и подтвердите.")) {
       this.http.get('https://api.telegram.org/bot' + botKey + "/getUpdates").subscribe(
             {
